@@ -140,6 +140,30 @@ def MB_DT(data,x):
     return Xnew,Ynew,Yer,lab
 
 
+def MB_eff_EleL(data,x):
+    Vz = data[x][:,5]
+    Dl = data[x][:,9]
+    P  = data[x][:,3]/760
+    E  = data[x][:,4]
+    xe = str(data[x][0][0])
+    ar = str(data[x][0][1])
+    lab = xe+'%Xe '+ar+'%He'
+    X = E/P
+    mu = (Vz*1e5)/E
+    Y = Dl/mu
+    Yer =Vz*data[x][:,6]/100
+    drop = np.where(Y == 0)[0]
+    X = np.delete(X,drop)
+    Y = np.delete(Y,drop)
+    Yer=np.delete(Yer,drop)
+    SORT = X.argsort()
+    X = X[SORT]
+    Y = Y[SORT]
+    Yer = Yer[SORT]
+
+    Xnew = np.linspace(0, 300, 10000)
+    Ynew = np.interp(Xnew, X, Y)
+    return Xnew,Ynew,Yer,lab
 
 ######################################## #################### #################### ####################
 ######
@@ -193,11 +217,11 @@ def CORRECTION_SIG(DT,Pres,Efid,Sigma):
     # diffusion when the field and gold have same efield
     D300 = Sigma[E==300]*dfull**2/(2*(t2[E==300])**3)
     # use this case to correct each sigma 
-    sigmacor = np.sqrt(2*t1[E==300]**3*D300/gapwidth**2)
+    sigmaCorSquared = 2*t1[E==300]**3*D300/gapwidth**2
     # this just orders the array to match up with each pressure
     Pressures = P[E==300]
     CorrectionT = np.copy(P)
     for x in range(0,len(Pressures)):
-        CorrectionT[CorrectionT==Pressures[x]] =sigmacor[x]
+        CorrectionT[CorrectionT==Pressures[x]] =sigmaCorSquared[x]
     sigma_squared_cor  = CorrectionT
     return sigma_squared_cor
