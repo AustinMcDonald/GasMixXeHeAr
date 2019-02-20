@@ -6,6 +6,11 @@ def find_nearest(array,value):
     idx = (np.abs(array-value)).argmin()
     return array[idx]
 
+def moving_average(a, n) :
+    ret = np.cumsum(a, dtype=float)
+    ret[n:] = ret[n:] - ret[:-n]
+    return ret[n - 1:] / n
+
 
 ######################################## #################### #################### #################### 
 ####  Magboltz array indexing for the iput file 
