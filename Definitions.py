@@ -41,8 +41,8 @@ def MB_V(data,x):
     Y = Y[SORT]
     Yer = Yer[SORT]
     
-    Xnew = np.linspace(0, 300, 10000)
-    Ynew = np.interp(Xnew, X, Y)
+    Xnew = X#np.linspace(0, 300, 10000)
+    Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
 
@@ -65,8 +65,8 @@ def MB_DLtpc(data,x):
     Y = Y[SORT]
     Yer = Yer[SORT]
 
-    Xnew = np.linspace(0, 300, 1000)
-    Ynew = np.interp(Xnew, X, Y)
+    Xnew = X#np.linspace(0, 300, 1000)
+    Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
 def MB_DTtpc(data,x):
@@ -88,8 +88,8 @@ def MB_DTtpc(data,x):
     Y = Y[SORT]
     Yer = Yer[SORT]
 
-    Xnew = np.linspace(0, 300, 1000)
-    Ynew = np.interp(Xnew, X, Y)
+    Xnew = X#np.linspace(0, 300, 1000)
+    Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
 
@@ -112,8 +112,8 @@ def MB_DL(data,x):
     Y = Y[SORT]
     Yer = Yer[SORT]
 
-    Xnew = np.linspace(0, 300, 1000)
-    Ynew = np.interp(Xnew, X, Y)
+    Xnew = X#np.linspace(0, 300, 1000)
+    Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
 def MB_DT(data,x):
@@ -135,8 +135,8 @@ def MB_DT(data,x):
     Y = Y[SORT]
     Yer = Yer[SORT]
 
-    Xnew = np.linspace(0, 300, 1000)
-    Ynew = np.interp(Xnew, X, Y)
+    Xnew = X#np.linspace(0, 300, 1000)
+    Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
 
@@ -161,8 +161,8 @@ def MB_eff_EleL(data,x):
     Y = Y[SORT]
     Yer = Yer[SORT]
 
-    Xnew = np.linspace(0, 300, 10000)
-    Ynew = np.interp(Xnew, X, Y)
+    Xnew = X#np.linspace(0, 300, 1000)
+    Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
 ######################################## #################### #################### ####################
