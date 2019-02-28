@@ -50,6 +50,28 @@ def MB_V(data,x):
     Ynew = Y#np.interp(Xnew, X, Y)
     return Xnew,Ynew,Yer,lab
 
+def MB_mu(data,x):
+    Vz = data[x][:,5]*1e5
+    P  = data[x][:,3]/760
+    E  = data[x][:,4]
+    xe = str(data[x][0][0])
+    ar = str(data[x][0][1])
+    lab = xe+'%Xe '+ar+'%He'
+    X = E/P
+    Y = (Vz/E)*P
+    Yer =Y*data[x][:,6]/100
+    drop = np.where(Y == 0)[0]
+    X = np.delete(X,drop)
+    Y = np.delete(Y,drop)
+    Yer=np.delete(Yer,drop)
+    SORT = X.argsort()
+    X = X[SORT]
+    Y = Y[SORT]
+    Yer = Yer[SORT]
+    
+    Xnew = np.linspace(0, 300, 10000)
+    Ynew = np.interp(Xnew, X, Y)
+    return Xnew,Ynew,Yer,lab
 
 def MB_DLtpc(data,x):
     Vz = data[x][:,11]
